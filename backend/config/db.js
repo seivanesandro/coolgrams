@@ -17,13 +17,14 @@ const conn = async () => {
             `mongodb+srv://${dbUser}:${dbPassword}@cluster0.k7r50fh.mongodb.net/?retryWrites=true&w=majority`
         );
 
+        //testar connecção
         //console.log('connecção realizada com sucesso!')
 
         return dbConn;
 
     } catch (error) {
 
-        console.log('ERRO:', error)
+        console.log('ERROR:', error)
     }
 }
 

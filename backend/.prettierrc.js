@@ -1,7 +1,7 @@
 // prettier.config.js or .prettierrc.js
 (module.exports = {
         "semi": true,
-        "singleQuote": true,
+        "singleQuote": false,
         "printWidth": 50,
         "tabWidth": 4,
         "trailingComma": "none",
