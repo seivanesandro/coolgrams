@@ -18,7 +18,7 @@ const conn = async () => {
         );
 
         //testar connecção
-        //console.log('connecção realizada com sucesso!')
+        console.log('connecção ao mongoDB realizada com sucesso!')
 
         return dbConn;
 

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 //schema possui os modulos, get, post etc
 const { Schema } = mongoose;
 
@@ -7,14 +7,14 @@ const userSchema = new Schema(
         name: String,
         email: String,
         password: String,
-        profileImage: String, 
+        profileImage: String,
         bio: String
-    }, 
+    },
     {
-        timestamps: true,
+        timestamps: true
     }
 );
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
