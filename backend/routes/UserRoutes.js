@@ -11,14 +11,14 @@ const {
 } = require('../controllers/UserController');
 
 //middlewares
-const validate = require('../middleWares/handleValidation');
+const validate = require('../middlewares/handleValidations');
 const {
     userCreateValidation,
     loginValidation,
     userUpdateValidation,
-} = require('../middleWares/userValidations');
-const authGuard = require('../middleWares/authGuard');
-const { imageUpload } = require("../middleWares/imageUpload");
+} = require('../middlewares/userValidations');
+const authGuard = require('../middlewares/authGuard');
+const { imageUpload } = require("../middlewares/imageUpload");
 
 // Routes
 router.post("/register", userCreateValidation(), validate, register);
