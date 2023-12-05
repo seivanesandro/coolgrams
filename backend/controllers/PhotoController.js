@@ -166,11 +166,95 @@ const updatePhoto = async(req, res) => {
     });
 };
 
+// Like funcionality
+const likePhoto = async(req, res) => {
+    const { id } = req.params;
+    const reqUser = req.user;
+
+    const photo = await Photo.findById(id);
+
+    // check if photo exists
+    if (!photo) {
+        res.status(404).json({
+            errors: ['Foto não encontrada!']
+        });
+        return;
+    };
+
+    //check if user already liked the photo
+    if(photo.likes.includes(reqUser._id)){
+        res.status(422).json({errors: ["Já curtiu esta foto!"]});
+        return;
+    };
+
+    // put user id in likes array
+    photo.likes.push(reqUser._id)
+
+    photo.save()
+
+    res.status(200).json({
+        photoId: id,
+        userId: reqUser._id,
+        message: 'Curtiste esta foto!'
+     });
+};
+
+//comment functionality
+const commentPhoto = async(req, res) => {
+    const { id } = req.params;
+    const { comment } = req.body;
+    const reqUser = req.user;
+
+    const user = await User.findById(reqUser._id);
+    const photo = await Photo.findById(id);
+
+    // Check if photo exists
+    if (!photo) {
+        res.status(404).json({
+            errors: ['Foto não foi encontrada!']
+        });
+        return;
+    }
+
+    // Put comment in the array of comments
+    const userComment = {
+        comment,
+        userName: user.name,
+        userImage: user.profileImage,
+        userId: user._id
+    };
+
+    photo.comments.push(userComment);
+
+    await photo.save();
+
+    res.status(200).json({
+        comment: userComment,
+        message:
+            'Comentário adicionado com sucesso!'
+    });
+};
+
+// search photos by title
+const searchPhotos = async(req, res) => {
+     const { q } = req.query;
+
+     const photos = await Photo.find({
+         title: new RegExp(q, 'i')
+     }).exec();
+
+     res.status(200).json(photos);
+}
+
+
 module.exports = {
     insertPhoto,
     deletePhoto,
     getAllPhotos,
     getUserPhotos,
     getPhotoById,
-    updatePhoto
+    updatePhoto,
+    likePhoto,
+    commentPhoto,
+    searchPhotos
 };

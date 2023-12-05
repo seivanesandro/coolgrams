@@ -46,9 +46,24 @@ const photoUpdateValidation = () => {
             )
     ];
 
-}
+};
+
+const commentValidation = () => {
+    return [
+        body('comment')
+            .isString()
+            .withMessage(
+                'O Campo comentário é obrigatório'
+            )
+            .isLength({ min: 5 })
+            .withMessage(
+                'O seu comentario precisa ter no mín: 5 caracteres.'
+            )
+    ];
+};
 
 module.exports = {
     photoInsertValidation,
-    photoUpdateValidation
+    photoUpdateValidation,
+    commentValidation
 };

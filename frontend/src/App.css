@@ -1,0 +1,33 @@
+/* @keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+ */
+
+ *,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.coolGramApp {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.Container-app-coolGram{
+    min-height: 95vh;
+    padding: 1rem 1rem 5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+}
+
+
