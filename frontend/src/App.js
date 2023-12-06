@@ -6,10 +6,15 @@ import './App.css';
 //import { HashLink } from 'react-router-hash-link' FIXME: must be install;
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
+// components
+import Navbar from './components/navBar/Navbar';
+import Footer from './components/footer/Footer';
+
 // pages
 import Home from './pages/home/Home';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
+
 
 
 function App() {
@@ -17,7 +22,7 @@ function App() {
       <div className="coolGramApp">
           <BrowserRouter>
               <header className="Container-header-coolGram">
-                  <h1>menu</h1>
+                  <Navbar />
               </header>
               <main className="Container-main-coolGram">
                   <Routes>
@@ -35,6 +40,9 @@ function App() {
                       />
                   </Routes>
               </main>
+              <footer className="Container-footer-coolGram" id="footer_Coolgram">
+                  <Footer />
+              </footer>
           </BrowserRouter>
       </div>
   );
