@@ -14,20 +14,61 @@
   box-sizing: border-box;
 }
 
+/*container-app*/
 .coolGramApp {
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-items: center;
 }
 
-.Container-app-coolGram{
+/*header*/
+.Container-header-coolGram{
+  width: 100%;
+  border: 1px solid #FAFAFA;
+  padding: 5rem;
+}
+
+/*main*/
+.Container-main-coolGram{
     min-height: 95vh;
-    padding: 1rem 1rem 5rem 1rem;
+    width: 55%;
+    padding: 5rem 5rem 5rem 5rem;
+    margin: 1rem 0 3rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid white;
+    border: 1px solid #121212;
+    border-radius: 16px;
+    box-shadow: 0 0 0.3rem #FAFAFA;
+    background: #232526;
+    color: #FAFAFA;
+}
+@media only screen and (max-width: 320px) {
+  .Container-main-coolGram{
+    width: 90% !important;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .Container-main-coolGram{
+    width: 90% !important;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .Container-main-coolGram{
+    width: 90% !important;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .Container-main-coolGram{
+    width: 75%;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .Container-main-coolGram{
+    width: 70%;
+}
 }
 
 
