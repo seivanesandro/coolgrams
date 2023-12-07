@@ -39,11 +39,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
     border-radius: 16px;
-    box-shadow: 0 0 0.4rem #0095b6,
+    box-shadow: 0 0 0.2rem #0095b6,
       0 0 0.2rem #FAFAFA,
-      0 0 0.2rem #0095b6;
+      0 0 0.1rem #0095b6;
     background: #121212;
     color: #FAFAFA;
 }
