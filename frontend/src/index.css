@@ -4,12 +4,13 @@
   font-family: 'Dosis', sans-serif;
   font-family: 'Montserrat Alternates', sans-serif;
   font-family: 'Playpen Sans', cursive;
-  font-size: 3vh;
+  font-size: 2.3vh;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   color: #FAFAFA;
-  background: linear-gradient(to right, #232526, #414345, #232526);
+  background: linear-gradient(to right, #121212, #414345, #121212);
+  /* background-color: #121212; */
  }
 
 @media only screen and (max-width: 320px) {

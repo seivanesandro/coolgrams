@@ -3,7 +3,7 @@ import React from 'react'
 
 // styles 
 //import styled from 'styled-components';
-//import styles from './NavBar.module.css';
+import './Footer.css';
 import logo3 from '../../assets/img/logo3.png';
 
 
@@ -12,7 +12,7 @@ const Footer = () => {
       <>
           <img src={logo3} alt='logo2'/>
           <p className="footerAuthor">
-              CoolGram &copy; 2023
+             copyrights&copy;CoolGram 2023
           </p>
       </>
   );

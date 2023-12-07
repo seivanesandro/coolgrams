@@ -3,7 +3,7 @@ import React from 'react'
 
 // styles 
 //import styled from 'styled-components';
-import logo from '../../assets/img/logo1.png';
+import logo from '../../assets/img/logo1bg.png';
 import './NavBar.css';
 
 //components
@@ -11,8 +11,8 @@ import { NavLink, Link } from 'react-router-dom';
 import {
     BsSearch,
     BsHouseDoorFill,
-    BsFillPersonFill,
-    BsFillCameraFill
+    // BsFillPersonFill,
+    // BsFillCameraFill
 } from 'react-icons/bs';
 
 const Navbar = () => {
@@ -24,7 +24,7 @@ const Navbar = () => {
                       <img
                           src={logo}
                           alt="responsive-img"
-                          style={{ 'width': '80%' }}
+                          style={{ 'width': '85%' }}
                       />
                   </Link>
               </div>
@@ -49,7 +49,7 @@ const Navbar = () => {
                       </li>
                       <li>
                           <NavLink to="/register">
-                              Cadastrar
+                              Registar
                           </NavLink>
                       </li>
                   </ul>
