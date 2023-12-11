@@ -93,7 +93,7 @@
 
 #nav-links {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   text-decoration: none;
   list-style-type: none;
 }
