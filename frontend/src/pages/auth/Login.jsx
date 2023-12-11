@@ -3,7 +3,7 @@ import React from 'react'
 
 //styles
 //import styled from 'styled-components';
-//import style from './Auth.module.css';
+import './Auth.css';
 
 const Login = props => {
   return (

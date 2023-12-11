@@ -1,0 +1,74 @@
+.login, .register{
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.login h2,
+.register h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 2em;
+  font-size: 3vh;
+}
+
+.subtitle {
+  font-weight: bold;
+  font-size: 1.5vh;
+  color: #c0c0c0;
+  margin-bottom: 2em;
+}
+
+.login_form,
+.register_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.link_for_login{
+  display: flex;
+  flex-direction: row;
+  gap: 0.2em !important; 
+}
+
+.link_for_register{
+  display: flex;
+  flex-direction: row;
+  gap: 0.2em !important; 
+}
+
+
+
+@media only screen and (max-width: 320px) {
+    .link_for_login{
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .link_for_register{
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .link_for_login{
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .link_for_register{
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .link_for_login{
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .link_for_register{
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}
