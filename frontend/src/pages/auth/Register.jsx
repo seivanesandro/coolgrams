@@ -2,11 +2,13 @@ import React from 'react'
 //import PropTypes from 'prop-types'
 
 //styles
-//import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import './Auth.css';
 
 //copmponentes
 import { Link } from 'react-router-dom';
+import Message from '../../components/message/Message';
+//import Loading from '../../components/load/Loading';
 
 //hook
 import { useState, useEffect } from 'react';
@@ -17,6 +19,23 @@ import { useState, useEffect } from 'react';
 // Redux
 import { register, reset } from "../../slices/authSlice";
 
+const Show = keyframes`
+    0%{
+        opacity:0;
+        top: -115px;
+    }
+    50%{
+        opacity:0.5;
+    }
+
+    100%{
+        opacity:1;
+        top: 0;
+    }
+`;
+const RegisterAnimation = styled.div`
+    animation: ${Show} 2s linear;
+`;
 
 const Register = () => {
     const [name, setname] = useState('');
@@ -55,7 +74,7 @@ const Register = () => {
 
 
     return (
-        <div className="register">
+        <RegisterAnimation className="register">
             <div className="register_header">
                 <h2 className="title">
                     Registar Conta
@@ -64,6 +83,12 @@ const Register = () => {
                     Preenche o teu registo aqui!
                 </p>
             </div>
+            {error && (
+                <Message
+                    msg={error}
+                    type="error"
+                />
+            )}
             <form
                 className="register_form"
                 onSubmit={handleSubmit}
@@ -112,10 +137,19 @@ const Register = () => {
                     }
                     maxLength={15}
                 />
-                <input
-                    type="submit"
-                    className="registar"
-                />
+                {loading && (
+                    <input
+                        type="submit"
+                        disabled
+                        value="Aguardar..."
+                    />
+                )}
+                {!loading && (
+                    <input
+                        type="submit"
+                        value="Registar"
+                    />
+                )}
             </form>
             <div className="link_for_login">
                 <p className="link_for_login">
@@ -128,7 +162,7 @@ const Register = () => {
                     </Link>
                 </p>
             </div>
-        </div>
+        </RegisterAnimation>
     );
 }
 

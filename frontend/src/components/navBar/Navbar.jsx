@@ -11,11 +11,22 @@ import { NavLink, Link } from 'react-router-dom';
 import {
     BsSearch,
     BsHouseDoorFill,
-    // BsFillPersonFill,
-    // BsFillCameraFill
+    BsFillPersonFill,
+    BsFillCameraFill
 } from 'react-icons/bs';
 
+//hooks
+import { useState  } from 'react';
+import { useAuth } from '../../hooks/useAuth';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+
 const Navbar = () => {
+    const { auth } = useAuth();
+    //user
+    const { user } = useSelector((state) => state.auth);
+
   return (
       <>
           <nav className="nav fixed-top">
@@ -24,7 +35,7 @@ const Navbar = () => {
                       <img
                           src={logo}
                           alt="responsive-img"
-                          style={{ 'width': '85%' }}
+                          style={{ width: '75%' }}
                       />
                   </Link>
               </div>
@@ -37,21 +48,48 @@ const Navbar = () => {
               </form>
               <div className="container-itens">
                   <ul id="nav-links">
-                      <li>
-                          <NavLink to="/">
-                              <BsHouseDoorFill />
-                          </NavLink>
-                      </li>
-                      <li>
-                          <NavLink to="/login">
-                              Login
-                          </NavLink>
-                      </li>
-                      <li>
-                          <NavLink to="/register">
-                              Registar
-                          </NavLink>
-                      </li>
+                      {auth ? (
+                          <>
+                              <li>
+                                  <NavLink to="/">
+                                      <BsHouseDoorFill />
+                                  </NavLink>
+                              </li>
+                              {user && (
+                                  <li>
+                                      <NavLink
+                                          to={`/users/${user._id}`}
+                                      >
+                                          <BsFillCameraFill />
+                                      </NavLink>
+                                  </li>
+                              )}
+                              <li>
+                                  <NavLink to="/profile">
+                                      <BsFillPersonFill />
+                                  </NavLink>
+                              </li>
+                              <li>
+                                  <span
+                                  >
+                                      Logout
+                                  </span>
+                              </li>
+                          </>
+                      ) : (
+                          <>
+                              <li>
+                                  <NavLink to="/login">
+                                      Login
+                                  </NavLink>
+                              </li>
+                              <li>
+                                  <NavLink to="/register">
+                                      Registar
+                                  </NavLink>
+                              </li>
+                          </>
+                      )}
                   </ul>
               </div>
           </nav>

@@ -11,6 +11,7 @@
   color: #FAFAFA;
   background: linear-gradient(to right, #121212, #414345, #121212);
   /* background-color: #121212; */
+  z-index: 0;
  }
 
 @media only screen and (max-width: 320px) {
@@ -128,7 +129,7 @@ input[type="submit"] {
 
 input:disabled {
   cursor: not-allowed;
-  background-color: #121212;
+  background-color: #414345;
 }
 
 button:hover,

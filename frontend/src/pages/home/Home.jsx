@@ -5,11 +5,15 @@ import React from 'react'
 //import styled from 'styled-components';
 //import style from './Home.module.css';
 
+//components
+//import Message from '../../components/message/Message'
 
 const Home = () => {
   return (
-    <>Home</>
-  )
+      <>
+          Home
+      </>
+  );
 }
 
 Home.propTypes = {}
