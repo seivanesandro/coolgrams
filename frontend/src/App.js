@@ -18,6 +18,7 @@ import Loading from './components/load/Loading';
 import Home from './pages/home/Home';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
+import EditProfile from './pages/editProfile/EditProfile';
 
 const ContainerLoading = styled.div`
     display: flex;
@@ -54,6 +55,16 @@ function App() {
                           element={
                               auth ? (
                                   <Home />
+                              ) : (
+                                  <Navigate to="login" />
+                              )
+                          }
+                      />
+                      <Route
+                          path="/profile"
+                          element={
+                              auth ? (
+                                  <EditProfile />
                               ) : (
                                   <Navigate to="login" />
                               )

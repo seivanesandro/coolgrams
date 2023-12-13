@@ -60,10 +60,19 @@ form{
   font-size: 1.5vh;
 }
 
+hr{
+  width: 25%;
+
+}
+
 label{ 
   display: flex;
   flex-direction: column; 
   text-align: left;
+}
+
+span{
+  text-align: center;
 }
 
 label span{

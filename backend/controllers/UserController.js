@@ -56,7 +56,7 @@ const login = async ( req, res ) => {
 
     //check if user existes
     if(!user) {
-        res.status(404).json({erros: ["email ainda nao se encontra registado!"]})
+        res.status(404).json({errors: ["email ainda não se encontra registado!"]})
         return
     }
 

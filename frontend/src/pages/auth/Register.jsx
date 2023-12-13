@@ -1,12 +1,12 @@
 import React from 'react'
 //import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
 
 //styles
 import styled, { keyframes } from 'styled-components';
 import './Auth.css';
 
 //copmponentes
-import { Link } from 'react-router-dom';
 import Message from '../../components/message/Message';
 //import Loading from '../../components/load/Loading';
 
@@ -71,7 +71,6 @@ const Register = () => {
     useEffect(() => {
         dispatch(reset());
     }, [dispatch]);
-
 
     return (
         <RegisterAnimation className="register">
