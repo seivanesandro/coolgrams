@@ -29,7 +29,7 @@ const imageUpload = multer({
     fileFilter(req, file, cb) {
         if (
             !file.originalname.match(
-                /\.(png|jpg)$/i 
+                /\.(png|jpg|avif)$/i 
                 //  /\.(png|jpg)$/i   le ficheiros PNG E JPG em maiusculas e minusculas alternativa a 1 opçao
                 // /\.(png|jpg|PNG|JPG)$/ le ficheiros PNG E JPG em maiusculas e minusculas
                 // /\.(png|jpg)$/   apenas le ficheiro png e jpg em minusculas
