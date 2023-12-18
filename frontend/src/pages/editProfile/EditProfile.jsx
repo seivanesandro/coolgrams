@@ -128,7 +128,7 @@ const EditProfile = (props) => {
 
             <div className="edit_profile_header">
                 <h2 className="title">
-                    Ben-vindo {user.name}
+                    Bem-vindo {user.name}
                 </h2>
                 <p className="subtitle">
                     Faça gestão do seu perfil

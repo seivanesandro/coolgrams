@@ -63,6 +63,7 @@ const getUserDetails = async id => {
 
         return res;
     } catch (error) {
+        //teste
         console.log(error);
     }
 };

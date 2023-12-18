@@ -19,6 +19,7 @@ import Home from './pages/home/Home';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import EditProfile from './pages/editProfile/EditProfile';
+import Profile from './pages/profile/Profile';
 
 const ContainerLoading = styled.div`
     display: flex;
@@ -65,6 +66,16 @@ function App() {
                           element={
                               auth ? (
                                   <EditProfile />
+                              ) : (
+                                  <Navigate to="login" />
+                              )
+                          }
+                      />
+                      <Route
+                          path="/users/:id"
+                          element={
+                              auth ? (
+                                  <Profile />
                               ) : (
                                   <Navigate to="login" />
                               )
