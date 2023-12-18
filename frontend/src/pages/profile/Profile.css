@@ -40,7 +40,6 @@
     border: 0.5px solid #FAFAFA;
 }
 
-
 .profile_description{
     display: flex;
     flex-direction: column;
@@ -56,7 +55,6 @@
         gap: 1rem;
     }
 }
-
 @media only screen and (max-width: 375px) {
     .profile_description {
         align-items: center;
@@ -64,7 +62,6 @@
         gap: 1rem;
     }
 }
-
 @media only screen and (max-width: 425px) {
     .profile_description {
         align-items: center;
@@ -75,6 +72,29 @@
 
 .profile_description p{
     font-size: 1.5vh;
+}
+
+.profile_form {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    gap: 2rem;
+}
+@media only screen and (max-width: 320px) {
+    .profile_form {
+        font-size: 1.2vh !important;
+    }
+}
+@media only screen and (max-width: 375px) {
+    .profile_form {
+        font-size: 1.4vh;
+    }
+}
+
+hr {
+    width: 83% !important;
+    display: flex;
+    align-self: center;
 }
 
 .new_photo {

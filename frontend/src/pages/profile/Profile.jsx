@@ -49,7 +49,7 @@ const Profile = () => {
     const submitHandle = (e) => {
         e.preventDefault();
 
-        
+
     }
 
     if(loading){
@@ -78,7 +78,7 @@ const Profile = () => {
                       ref={newPhotoForm}
                   >
                       <h3>Novo Post</h3>
-                       <form className="form_profile" onSubmit={submitHandle} > 
+                       <form className="profile_form" onSubmit={submitHandle} >
                           <label>
                               <span>Titulo</span>
                               <input
