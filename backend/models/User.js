@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-//schema possui os modulos, get, post etc
 const { Schema } = mongoose;
 
 const userSchema = new Schema(
@@ -15,6 +14,6 @@ const userSchema = new Schema(
     }
 );
 
-const User = mongoose.model('User', userSchema);
+User = mongoose.model('User', userSchema);
 
 module.exports = User;

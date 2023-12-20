@@ -2,7 +2,7 @@ import React from 'react'
 //import PropTypes from 'prop-types'
 
 //styles
-//import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import './Profile.css';
 
 import { uploads } from '../../utils/config';
@@ -21,43 +21,192 @@ import { useParams } from 'react-router-dom';
 //redux
 import { getUserDetails } from '../../slices/userSlice';
 
+import {
+    getUserPhotos,
+    publishPhoto,
+    resetMessage,
+    deletePhoto,
+    updatePhoto
+} from '../../slices/photoSlice';
+
+const Show = keyframes`
+    0%{
+        opacity:0;
+        top: -115px;
+    }
+    50%{
+        opacity:0.5;
+    }
+
+    100%{
+        opacity:1;
+        top: 0;
+    }
+`;
+const EditProfileAnimation = styled.div`
+    animation: ${Show} 2s linear;
+`;
+
+const ContainerLoading = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
 
 
 const Profile = () => {
 
-    const { id } = useParams();
+   const { id } = useParams();
 
-    const dispatch = useDispatch();
+   const dispatch = useDispatch();
 
-    const { user, loading } = useSelector(
-        state => state.user
-    );
-    const { user: userAuth } = useSelector(
-        state => state.auth
-    );
+   const { user, loading } = useSelector(
+       state => state.user
+   );
+   const { user: userAuth } = useSelector(
+       state => state.auth
+   );
+   const {
+       photos,
+       loading: loadingPhoto,
+       error: errorPhoto,
+       message: messagePhoto
+   } = useSelector(state => state.photo);
 
-    //new form and edit form refs
-    const newPhotoForm = useRef();
-    const editPhotoForm = useRef();
+   const [title, setTitle] = useState();
+   const [image, setImage] = useState();
 
-    // Load user data
-    useEffect(() => {
+   const [editId, setEditId] = useState();
+   const [editImage, setEditImage] = useState();
+   const [editTitle, setEditTitle] = useState();
 
-        dispatch(getUserDetails(id));
-    }, [dispatch, id]);
+   // New form and edit form refs
+   const newPhotoForm = useRef();
+   const editPhotoForm = useRef();
 
-    const submitHandle = (e) => {
-        e.preventDefault();
+   // Load user data
+   useEffect(() => {
+       dispatch(getUserDetails(id));
+       dispatch(getUserPhotos(id));
+   }, [dispatch, id]);
 
+   // Reset component message
+   function resetComponentMessage() {
+       setTimeout(() => {
+           dispatch(resetMessage());
+       }, 5000);
+   }
 
-    }
+   // Publish a new photo
+   const submitHandle = e => {
+       e.preventDefault();
+
+       const photoData = {
+           title,
+           image
+       };
+
+       // build form data
+       const formData = new FormData();
+
+       const photoFormData = Object.keys(
+           photoData
+       ).forEach(key =>
+           formData.append(key, photoData[key])
+       );
+
+       formData.append('photo', photoFormData);
+
+       dispatch(publishPhoto(formData));
+
+       setTitle('');
+
+       resetComponentMessage();
+   };
+
+   // change image state
+   const handleFile = e => {
+       const image = e.target.files[0];
+
+       setImage(image);
+   };
+
+   // Exclude an image
+   const handleDelete = id => {
+       dispatch(deletePhoto(id));
+
+       resetComponentMessage();
+   };
+
+   // Show or hide forms
+   function hideOrShowForms() {
+       newPhotoForm.current.classList.toggle(
+           'hide'
+       );
+       editPhotoForm.current.classList.toggle(
+           'hide'
+       );
+   }
+
+   // Show edit form
+   const handleEdit = photo => {
+       if (
+           editPhotoForm.current.classList.contains(
+               'hide'
+           )
+       ) {
+           hideOrShowForms();
+       }
+
+       setEditId(photo._id);
+       setEditImage(photo.image);
+       setEditTitle(photo.title);
+   };
+
+   // Cancel editing
+   const handleCancelEdit = () => {
+       hideOrShowForms();
+   };
+
+   // Update photo title
+   const handleUpdate = e => {
+       e.preventDefault();
+
+       const photoData = {
+           title: editTitle,
+           id: editId
+       };
+
+       dispatch(updatePhoto(photoData));
+
+       resetComponentMessage();
+   };
 
     if(loading){
-        return <Loading />;
+        return (
+            <ContainerLoading>
+                <Loading
+                    size="4"
+                    speedborder="1"
+                />
+            </ContainerLoading>
+        );
     }
 
   return (
-      <div className="profile">
+      <EditProfileAnimation className="profile">
+          {errorPhoto && (
+              <Message
+                  msg={errorPhoto}
+                  type="error"
+              />
+          )}
+          {messagePhoto && (
+              <Message
+                  msg={messagePhoto}
+                  type="success"
+              />
+          )}
           <div className="profile_header">
               {user.profileImage && (
                   <img
@@ -78,12 +227,24 @@ const Profile = () => {
                       ref={newPhotoForm}
                   >
                       <h3>Novo Post</h3>
-                       <form className="profile_form" onSubmit={submitHandle} >
+                      <form
+                          className="profile_form"
+                          onSubmit={submitHandle}
+                      >
                           <label>
                               <span>Titulo</span>
                               <input
                                   type="text"
                                   placeholder="escreva o titulo"
+                                  onChange={e =>
+                                      setTitle(
+                                          e.target
+                                              .value
+                                      )
+                                  }
+                                  value={
+                                      title || ''
+                                  }
                               />
                           </label>
                           <label>
@@ -92,18 +253,34 @@ const Profile = () => {
                                   imagem (jpg |
                                   png)
                               </span>
-                              <input type="file" />
+                              <input
+                                  type="file"
+                                  onChange={
+                                      handleFile
+                                  }
+                              />
                           </label>
-                          <input
-                              type="submit"
-                              value="Post"
-                          />
+                          {!loadingPhoto && (
+                              <input
+                                  type="submit"
+                                  value="Post"
+                              />
+                          )}
+                          {loadingPhoto && (
+                              <ContainerLoading>
+                                  <Loading
+                                      size="3"
+                                      speedborder='1'
+                                  />
+                              </ContainerLoading>
+                          )}
+
                           <hr />
                       </form>
                   </div>
               </>
           )}
-      </div>
+      </EditProfileAnimation>
   );
 }
 
