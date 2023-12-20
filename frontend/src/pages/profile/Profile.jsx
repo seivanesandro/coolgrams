@@ -220,6 +220,7 @@ const Profile = () => {
               </div>
           </div>
           <hr />
+          {/* publicar fotos */}
           {id === userAuth._id && (
               <>
                   <div
@@ -270,16 +271,80 @@ const Profile = () => {
                               <ContainerLoading>
                                   <Loading
                                       size="3"
-                                      speedborder='1'
+                                      speedborder="1"
                                   />
                               </ContainerLoading>
                           )}
-
-                          <hr />
                       </form>
                   </div>
+
+                  {/* editar fotos */}
+
               </>
           )}
+
+          <hr />
+          {/* visualizar fotos */}
+          <div className="user_photos">
+              <h3>As suas publicações</h3>
+              <div className="photos_container">
+                  {photos &&
+                      photos.map(photo => (
+                          <div
+                              className="photo"
+                              key={photo._id}
+                          >
+                              {photo.title}
+                              {photo.image && (
+                                  <img
+                                      src={`${uploads}/photos/${photo.image}`}
+                                      alt={
+                                          photo.title
+                                      }
+                                  />
+                              )}
+
+                              {id ===
+                              userAuth._id ? (
+                                  <div className="actions">
+                                      <Link
+                                          to={`/photos/${photo._id}`}
+                                      >
+                                          <BsFillEyeFill />
+                                      </Link>
+                                      <BsPencilFill
+                                          onClick={() =>
+                                              handleEdit(
+                                                  photo
+                                              )
+                                          }
+                                      />
+                                      <BsXLg
+                                          onClick={() =>
+                                              handleDelete(
+                                                  photo._id
+                                              )
+                                          }
+                                      />
+                                  </div>
+                              ) : (
+                                  <Link
+                                      className="btn"
+                                      to={`/photos/${photo._id}`}
+                                  >
+                                      ver foto
+                                  </Link>
+                              )}
+                              <hr />
+                          </div>
+                      ))}
+                  {photos.length === 0 && (
+                      <span>
+                          Sem fotos publicadas.
+                      </span>
+                  )}
+              </div>
+          </div>
       </EditProfileAnimation>
   );
 }
