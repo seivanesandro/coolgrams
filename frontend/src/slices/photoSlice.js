@@ -58,7 +58,7 @@ export const getUserPhotos = createAsyncThunk(
     }
 );
 
-// Get photo
+// Get photo by id
 export const getPhoto = createAsyncThunk(
     'photo/getphoto',
     async id => {

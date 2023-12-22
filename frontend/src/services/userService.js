@@ -43,7 +43,6 @@ const updateProfile = async (data, token) => {
             .catch(err => err);
 
         return res;
-
     } catch (error) {
         console.log(error);
     }
@@ -63,7 +62,6 @@ const getUserDetails = async id => {
 
         return res;
     } catch (error) {
-        //teste
         console.log(error);
     }
 };

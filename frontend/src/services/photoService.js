@@ -44,7 +44,7 @@ const getUserPhotos = async id => {
     }
 };
 
-// Get photo
+// Get photo by id
 const getPhoto = async id => {
     const config = requestConfig('GET');
 
