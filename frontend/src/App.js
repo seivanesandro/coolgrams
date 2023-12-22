@@ -20,6 +20,7 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import EditProfile from './pages/editProfile/EditProfile';
 import Profile from './pages/profile/Profile';
+import Photo from './pages/photo/Photo';
 
 const ContainerLoading = styled.div`
     display: flex;
@@ -100,6 +101,10 @@ function App() {
                                   <Navigate to="/" />
                               )
                           }
+                      />
+                      <Route
+                          path="photos/:id"
+                          element={<Photo />}
                       />
                   </Routes>
               </main>

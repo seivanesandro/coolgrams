@@ -143,10 +143,29 @@ hr {
 }
 
 .edit_photo {
-    margin-bottom: 1em;
+    padding: 1em;
 }
 
 .edit_photo img {
     width: 100%;
     margin-bottom: 1em;
+}
+
+.edit_form {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    gap: 2rem;
+}
+
+@media only screen and (max-width: 320px) {
+    .edit_form {
+        font-size: 1.2vh !important;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .edit_form {
+        font-size: 1.4vh;
+    }
 }

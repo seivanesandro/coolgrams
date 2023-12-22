@@ -84,6 +84,7 @@ export const deletePhoto = createAsyncThunk(
             );
 
         console.log(data.errors);
+        
         // Check for errors
         if (data.errors) {
             return thunkAPI.rejectWithValue(
