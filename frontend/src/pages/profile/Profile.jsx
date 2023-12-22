@@ -352,7 +352,6 @@ const Profile = () => {
                                 className="photo"
                                 key={photo._id}
                             >
-                                {photo.title}
                                 {photo.image && (
                                     <img
                                         src={`${uploads}/photos/${photo.image}`}
