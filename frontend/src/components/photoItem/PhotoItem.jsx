@@ -61,7 +61,7 @@ const BodyCard = styled.div`
     flex-direction: column;
     align-content: flex-start;
     flex-wrap: wrap;
-    margin: 0 18rem 0 0;
+    margin: 0 18rem 0 0 !important;
 
     @media only screen and (${devices.mobileP}) {
         margin: 0 2rem 0 0 !important;
