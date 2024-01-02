@@ -123,6 +123,7 @@ const like = async (id, token) => {
             .catch(err => err);
 
         return res;
+        
     } catch (error) {
         console.log(error);
     }

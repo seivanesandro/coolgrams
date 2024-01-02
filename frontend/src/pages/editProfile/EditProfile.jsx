@@ -155,25 +155,38 @@ const EditProfile = (props) => {
                 className="edit_profile_form"
                 onSubmit={handleSubmit}
             >
-                <input
-                    type="text"
-                    placeholder="Nome"
-                    minLength={3}
-                    maxLength={10}
-                    onChange={e => {
-                        setName(e.target.value);
-                    }}
-                    value={name || ''}
-                />
-                <input
-                    type="email"
-                    placeholder="E-mail"
-                    disabled
-                    value={email || ''}
-                />
+                <label>
+                    <span>Nome</span>
+                    <input
+                        type="text"
+                        placeholder="Nome"
+                        minLength={3}
+                        maxLength={10}
+                        onChange={e => {
+                            setName(
+                                e.target.value
+                            );
+                        }}
+                        value={name || ''}
+                    />
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input
+                        type="email"
+                        placeholder="E-mail"
+                        disabled
+                        value={email || ''}
+                    />
+                </label>
                 <hr />
                 <label>
-                    <span>Imagem de Perfil <small>( jpg | png )</small></span>
+                    <span>
+                        Imagem de Perfil{' '}
+                        <small>
+                            ( jpg | png )
+                        </small>
+                    </span>
                     <input
                         type="file"
                         onChange={handleFile}

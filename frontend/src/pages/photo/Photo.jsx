@@ -27,6 +27,8 @@ import {
     like,
     comment
 } from '../../slices/photoSlice';
+import LikeContainer from '../../components/likeContainer/LikeContainer';
+import { devices } from '../../utils/constantes';
 
 
 
@@ -55,6 +57,56 @@ const ContainerLoading = styled.div`
     justify-content: center;
 `;
 
+const CommentsContainer = styled.div`
+    animation: ${Show} 2s linear;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    text-align: center;
+    margin-top: 2rem;
+`;
+
+const FormStyled = styled.form`
+    animation: ${Show} 2s linear;
+    display: flex;
+    flex-direction: column;
+    gap: 0 !important;
+    margin-bottom: 3rem;
+`;
+
+const CommentStyle = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 0 2rem 0;
+`;
+
+const AuthorCommentStyled = styled.p`
+    color: #6b6b6b;
+    padding: 1rem;
+    border-radius: 16px;
+    font-style: italic;
+    font-size: 25px;
+
+    @media only screen and (${devices.mobileP}) {
+        padding: 0.1rem;
+    }
+`;
+const AutorImgStyle = styled.img`
+    width: 90px !important;
+    height: 90px !important;
+    border-radius: 50% !important;
+    border: 2px solid #fff;
+    color: #6b6b6b;
+`;
+const AutorNameStyle = styled.p`
+    cursor: pointer;
+    color: #6b6b6b;
+`;
+
+
 export const Photo = () => {
     const { id } = useParams();
 
@@ -70,7 +122,7 @@ export const Photo = () => {
     const { photo, loading, error, message } =
         useSelector(state => state.photo);
 
-    //coments state
+    //comments state
     const [commentText, setCommentText] =
         useState();
 
@@ -114,8 +166,107 @@ export const Photo = () => {
         );
     }
   return (
-      <EditProfileAnimation className='photo'>
+      <EditProfileAnimation className="photo">
+          {error && (
+              <Message msg={error} type="error" />
+          )}
+          {message && (
+              <Message
+                  msg={message}
+                  type="success"
+              />
+          )}
           <PhotoItem photo={photo} />
+          <LikeContainer
+              photo={photo}
+              user={user}
+              handleLike={handleLike}
+          />
+
+          <CommentsContainer className="container-comments">
+              {!photo.commments && (
+                      <>
+                          <h3>
+                              Comentários (
+                              {photo.comments &&
+                                  photo.comments
+                                      .length}
+                              )
+                          </h3>
+                          <FormStyled
+                              onSubmit={
+                                  handleComment
+                              }
+                          >
+                              <input
+                                  type="text"
+                                  placeholder="Insira um comentário"
+                                  onChange={e =>
+                                      setCommentText(
+                                          e.target
+                                              .value
+                                      )
+                                  }
+                                  value={
+                                      commentText ||
+                                      ''
+                                  }
+                              />
+                              <input
+                                  type="submit"
+                                  value="Inserir comentário"
+                              />
+                          </FormStyled>
+                          {photo.comments &&
+                              photo.comments
+                                  .length ===
+                                  0 && (
+                                  <span>
+                                      Não contém
+                                      comentários
+                                      ainda!
+                                  </span>
+                              )}
+                          {photo.comments &&
+                              photo.comments.map(
+                                  comment => (
+                                      <CommentStyle
+                                          className="comment"
+                                          key={
+                                              comment.comment
+                                          }
+                                      >
+                                          <div className="author">
+                                              {comment.userImage && (
+                                                  <AutorImgStyle
+                                                      src={`${uploads}/users/${comment.userImage}`}
+                                                      alt={
+                                                          comment.userName
+                                                      }
+                                                  />
+                                              )}
+                                              <Link
+                                                  className="author_styled"
+                                                  to={`/users/${comment.userId}`}
+                                              >
+                                                  <AutorNameStyle>
+                                                      {
+                                                          comment.userName
+                                                      }
+                                                  </AutorNameStyle>
+                                              </Link>
+                                          </div>
+                                          <AuthorCommentStyled>
+                                              {
+                                                  comment.comment
+                                              }
+                                          </AuthorCommentStyled>
+                                      </CommentStyle>
+                                  )
+                              )}
+                      </>
+                  )}
+          </CommentsContainer>
       </EditProfileAnimation>
   );
 };

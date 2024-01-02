@@ -18,6 +18,7 @@ import { useState, useEffect } from 'react';
   } from 'react-redux';
 // Redux
 import { register, reset } from "../../slices/authSlice";
+import Loading from '../../components/load/Loading';
 
 const Show = keyframes`
     0%{
@@ -35,6 +36,12 @@ const Show = keyframes`
 `;
 const RegisterAnimation = styled.div`
     animation: ${Show} 2s linear;
+`;
+
+const ContainerLoading = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 const Register = () => {
@@ -137,11 +144,12 @@ const Register = () => {
                     maxLength={15}
                 />
                 {loading && (
-                    <input
-                        type="submit"
-                        disabled
-                        value="Aguardar..."
-                    />
+                    <ContainerLoading>
+                        <Loading
+                            size="4"
+                            speedborder="1"
+                        />
+                    </ContainerLoading>
                 )}
                 {!loading && (
                     <input

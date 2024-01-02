@@ -21,4 +21,7 @@
     font-weight: bold;
 }
 
+.title_card{
+    display: flex;
+}
 /*card*/

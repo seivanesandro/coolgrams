@@ -19,6 +19,7 @@ import {
 
   // Redux
 import { login, reset } from "../../slices/authSlice";
+import Loading from '../../components/load/Loading';
 
 const Show = keyframes`
     0%{
@@ -36,6 +37,12 @@ const Show = keyframes`
 `;
 const LoginAnimation = styled.div`
     animation: ${Show} 2s linear;
+`;
+
+const ContainerLoading = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 const Login = (props) => {
@@ -112,11 +119,12 @@ const Login = (props) => {
                 />
 
                 {loading && (
-                    <input
-                        type="submit"
-                        disabled
-                        value="Aguardar..."
-                    />
+                    <ContainerLoading>
+                        <Loading
+                            size="4"
+                            speedborder="1"
+                        />
+                    </ContainerLoading>
                 )}
                 {!loading && (
                     <input
