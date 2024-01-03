@@ -54,8 +54,8 @@ const EditProfileAnimation = styled.div`
 const ImgCard = styled.img`
     max-width: 100% !important;
     max-height: 100% !important;
-    border-bottom-right-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
+    border-top-right-radius: 16px !important;
+    border-top-left-radius: 16px !important;
 `;
 
 const BodyCard = styled.div`
