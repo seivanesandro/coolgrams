@@ -42,11 +42,12 @@ const EditProfileAnimation = styled.div`
     width: 100%;
     height: 100%;
 
+    //FIXME: teste resolutions to responsive image
     @media only screen and (${devices.mobileG}) {
-        width: 300% !important;
+        width: 100% !important;
     }
     @media only screen and (${devices.tablet}) {
-        width: 200%;
+        width: 100%;
     }
 `;
 

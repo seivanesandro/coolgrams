@@ -27,15 +27,13 @@ const ContainerLike = styled.div`
     display: flex;
     flex-direction: column;
     align-content: center;
-    align-items: center;
+    align-items: stretch;
     gap: 0.5rem;
     flex-wrap: wrap;
-    margin: 0 30rem 0 0 !important;
-    padding: 3rem 0 3rem 0;
+    /* margin: 0 30rem 0 0 !important;
+    padding: 3rem 0 3rem 0; */
     color: #fafafa;
     cursor: pointer;
-
-    border-bottom: 1px solid #414345;
 
     animation: ${Show} 2s linear;
 
@@ -47,9 +45,9 @@ const ContainerLike = styled.div`
     }
 `;
 
-const LikeContainer = ({photo, user, handleLike}) => {
+const LikeContainer = ({photo, user, handleLike, border}) => {
   return (
-      <ContainerLike className="like">
+      <ContainerLike className="like" border={border}>
           {photo.likes && user && (
               <>
                   {photo.likes.includes(
@@ -65,7 +63,6 @@ const LikeContainer = ({photo, user, handleLike}) => {
                   )}
                   <p>
                       {photo.likes.length}{' '}
-                      Likes(s)
                   </p>
               </>
           )}
@@ -73,6 +70,5 @@ const LikeContainer = ({photo, user, handleLike}) => {
   );
 }
 
-LikeContainer.propTypes = {}
 
 export default LikeContainer

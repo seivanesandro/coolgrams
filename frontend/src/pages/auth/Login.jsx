@@ -79,7 +79,7 @@ const Login = (props) => {
         <LoginAnimation className="login">
             <div className="login_header">
                 <h2 className="title">
-                    ReactGrams
+                    CoolGrams
                 </h2>
                 <p className="subtitle">
                     Faz o teu Login aqui!

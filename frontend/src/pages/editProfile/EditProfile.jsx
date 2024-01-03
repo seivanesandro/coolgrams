@@ -15,6 +15,7 @@ import { profile, updateProfile, resetMessage } from "../../slices/userSlice";
 
 // Components
 import Message from "../../components/message/Message";
+import Loading from '../../components/load/Loading';
 
 
 const Show = keyframes`
@@ -33,6 +34,12 @@ const Show = keyframes`
 `;
 const EditProfileAnimation = styled.div`
     animation: ${Show} 2s linear;
+`;
+
+const ContainerLoading = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 const EditProfile = (props) => {
@@ -229,11 +236,12 @@ const EditProfile = (props) => {
                     />
                 )}
                 {loading && (
-                    <input
-                        type="submit"
-                        disabled
-                        value="Aguarde..."
-                    />
+                    <ContainerLoading>
+                        <Loading
+                            size="4"
+                            speedborder="1"
+                        />
+                    </ContainerLoading>
                 )}
             </form>
         </EditProfileAnimation>

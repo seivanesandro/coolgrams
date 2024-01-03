@@ -1,7 +1,27 @@
 .photo{
-    width: 50%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     gap: 3rem;
     align-items: center;
 }
+
+    /*FIXME: responsive width*/
+
+        @media only screen and (max-width: 320px) {
+            .photo {
+                    width: 180% !important;
+                }
+        }
+    
+        @media only screen and (max-width: 425px) {
+            .photo {
+                    width: 150% !important;
+                }
+        }
+
+        @media only screen and (max-width: 1024px) {
+            .photo {
+                    width: 110%;
+                }
+        }
