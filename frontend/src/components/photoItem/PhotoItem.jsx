@@ -1,15 +1,17 @@
 import React from 'react'
 //import PropTypes from 'prop-types'
 
+//styles 
+import './PhotoItem.css';
+import styled, { keyframes } from 'styled-components';
+import { devices } from '../../utils/constantes';
+
+
 import { uploads } from '../../utils/config';
 
 import { Link } from 'react-router-dom';
 
 
-//styles 
-import './PhotoItem.css';
-import styled, { keyframes } from 'styled-components';
-import { devices } from '../../utils/constantes';
 
 const Show = keyframes`
     0%{
@@ -61,21 +63,14 @@ const ImgCard = styled.img`
 const BodyCard = styled.div`
     display: flex;
     flex-direction: column;
-    align-content: flex-start;
-    flex-wrap: wrap;
-    margin: 0 10rem 0 0 !important;
-    padding: 3rem 0 3rem 0;
-    gap: 0.3rem;
-
-    @media only screen and (${devices.mobileP}) {
-        text-align: center;
-    }
-
-    @media only screen and (${devices.portatilL}) {
-        margin: 0 !important;
+    gap: 3rem;
+    align-items: center;
+    padding: 2rem;
+    
+    @media only screen and (${devices.mobileG}) {
+        gap: 2rem !important;
     }
 `;
-
 
 const PhotoItem = ({ photo }) => {
     return (
@@ -88,18 +83,18 @@ const PhotoItem = ({ photo }) => {
                 />
             )}
             <BodyCard className="card_body">
-
                 <p className="title_card">
                     {' '}
-                    {photo.title}
+                    "{photo.title}"
                 </p>
-                <p>
+                <div className="Author_card">
                     <Link
                         to={`/users/${photo.userId}`}
+                        className="author"
                     >
                         {photo.userName}
                     </Link>
-                </p>
+                </div>
             </BodyCard>
         </EditProfileAnimation>
     );

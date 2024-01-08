@@ -45,9 +45,9 @@
 @media only screen and (max-width: 768px) {
   .nav{
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
-    flex-direction: row-reverse;
+    flex-direction: row;
   }
 }
 

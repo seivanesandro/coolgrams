@@ -19,9 +19,51 @@
 
 .photo_author a {
     font-weight: bold;
+    
+}
+
+.author{
+    font-size: 2vh;
+    color: #6B6B6B;
+}
+.author:hover {
+    font-size: 2vh;
+    color: #0095b6;
 }
 
 .title_card{
     display: flex;
+    font-weight: 600;
+    font-size: 2.5vh;
+    color: #f9f9f9;
+}
+
+@media only screen and (max-width: 425px) {
+    .title_card {
+
+        font-size: 2vh !important;
+
+    }}
+
+.Author_card{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+
+
+    padding: 3.5rem;
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    border: 2px solid #fff;
+    color: #6b6b6b;
+
+}
+
+.Author_card:hover {
+    font-size: 2vh;
+    background: #FAFAFA;
+    font-weight: 600;
 }
 /*card*/

@@ -137,10 +137,6 @@ const EditProfile = (props) => {
                 <h2 className="title">
                     Bem-vindo {user.name}
                 </h2>
-                <p className="subtitle">
-                    Faça gestão do seu perfil
-                    aqui!
-                </p>
 
                 {/* preview image */}
                 {(user.profileImage ||
@@ -157,6 +153,11 @@ const EditProfile = (props) => {
                         alt={user.name}
                     />
                 )}
+
+                <p className="subtitle">
+                    Faça gestão do seu perfil
+                    aqui!
+                </p>
             </div>
             <form
                 className="edit_profile_form"
