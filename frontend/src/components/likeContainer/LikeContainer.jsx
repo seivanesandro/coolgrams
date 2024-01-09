@@ -30,45 +30,58 @@ const ContainerLike = styled.div`
     align-items: stretch;
     gap: 0.5rem;
     flex-wrap: wrap;
-    /* margin: 0 30rem 0 0 !important;
-    padding: 3rem 0 3rem 0; */
     color: #fafafa;
     cursor: pointer;
 
     animation: ${Show} 2s linear;
 
     @media only screen and (${devices.mobileP}) {
-        margin: 0 2rem 0 0 !important;
+        margin: 0
+            ${({ marginmobile }) =>
+                marginmobile}rem 0 0 !important;
     }
     @media only screen and (${devices.portatilL}) {
-        margin: 0 6rem 0 0;
+        margin: 0
+            ${({ marginlaptop }) => marginlaptop}rem 0 0;
     }
 `;
 
-const LikeContainer = ({photo, user, handleLike, border}) => {
-  return (
-      <ContainerLike className="like" border={border}>
-          {photo.likes && user && (
-              <>
-                  {photo.likes.includes(
-                      user._id
-                  ) ? (
-                      <BsHeartFill />
-                  ) : (
-                      <BsHeart
-                          onClick={() =>
-                              handleLike(photo)
-                          }
-                      />
-                  )}
-                  <p>
-                      {photo.likes.length}{' '}
-                  </p>
-              </>
-          )}
-      </ContainerLike>
-  );
-}
+const LikeContainer = ({
+    photo,
+    user,
+    handleLike,
+    marginmobile,
+    marginlaptop,
+}) => {
+    return (
+        <ContainerLike
+            className="like"
+            marginmobile={marginmobile}
+            marginlaptop={marginlaptop}
+        >
+            {photo.likes && user && (
+                <>
+                    {photo.likes.includes(
+                        user._id
+                    ) ? (
+                        <BsHeartFill />
+                    ) : (
+                        <BsHeart
+                            onClick={() =>
+                                handleLike(photo)
+                            }
+                        />
+                    )}
+                    <p>{photo.likes.length} </p>
+                </>
+            )}
+        </ContainerLike>
+    );
+};
 
+LikeContainer.defaultProps = {
+    marginmobile: '2',
+    marginlaptop: '6'
+};
 
 export default LikeContainer

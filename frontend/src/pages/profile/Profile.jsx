@@ -349,7 +349,7 @@ const Profile = () => {
                     {photos &&
                         photos.map(photo => (
                             <div
-                                className="photo"
+                                className="single_photo"
                                 key={photo._id}
                             >
                                 {photo.image && (

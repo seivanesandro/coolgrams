@@ -180,6 +180,8 @@ export const Photo = () => {
           <LikeContainer
               photo={photo}
               user={user}
+              marginmobile='0'
+              marginlaptop='0'
               handleLike={handleLike}
           />
 

@@ -69,7 +69,8 @@ const getUserDetails = async id => {
 const userService = {
     profile,
     updateProfile,
-    getUserDetails
+    getUserDetails,
+
 };
 
 export default userService;

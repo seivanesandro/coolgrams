@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 //import PropTypes from 'prop-types'
 
 // styles 
@@ -33,11 +33,21 @@ const Navbar = () => {
 
      const dispatch = useDispatch();
 
+      const [query, setQuery] = useState('');
+
     const handleLogout = () => {
         dispatch(logout());
         dispatch(reset());
 
         navigate('/login');
+    };
+
+    const handleSearch = e => {
+        e.preventDefault();
+
+        if (query) {
+            return navigate(`/search?q=${query}`);
+        }
     };
 
   return (
@@ -52,11 +62,15 @@ const Navbar = () => {
                       />
                   </Link>
               </div>
-              <form id="search-form">
+              <form
+                  id="search-form"
+                  onSubmit={handleSearch}
+              >
                   <BsSearch color="black" />
                   <input
                       type="text"
                       placeholder="Pesquisar"
+                      onChange={( e )=> setQuery(e.target.value)}
                   />
               </form>
               <div className="container-itens">

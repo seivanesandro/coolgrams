@@ -61,6 +61,12 @@
 
 }
 
+@media only screen and (max-width: 425px) {
+    .Author_card {
+        padding: 3rem;
+    }
+}
+
 .Author_card:hover {
     font-size: 2vh;
     background: #FAFAFA;

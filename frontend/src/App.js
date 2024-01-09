@@ -21,6 +21,7 @@ import Register from './pages/auth/Register';
 import EditProfile from './pages/editProfile/EditProfile';
 import Profile from './pages/profile/Profile';
 import Photo from './pages/photo/Photo';
+import Search from './pages/search/Search';
 
 const ContainerLoading = styled.div`
     display: flex;
@@ -79,6 +80,16 @@ function App() {
                                   <Profile />
                               ) : (
                                   <Navigate to="login" />
+                              )
+                          }
+                      />
+                      <Route
+                          path="/search"
+                          element={
+                              auth ? (
+                                  <Search />
+                              ) : (
+                                  <Navigate to="/login" />
                               )
                           }
                       />

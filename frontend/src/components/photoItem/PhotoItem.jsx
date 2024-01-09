@@ -45,8 +45,13 @@ const EditProfileAnimation = styled.div`
     height: 100%;
 
     //FIXME: teste resolutions to responsive image
+
+    @media only screen and (${devices.mobileP}) {
+        width: 130% !important;
+    }
+
     @media only screen and (${devices.mobileG}) {
-        width: 100% !important;
+        width: 100% ;
     }
     @media only screen and (${devices.tablet}) {
         width: 100%;

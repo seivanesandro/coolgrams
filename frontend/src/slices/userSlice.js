@@ -143,7 +143,7 @@ export const userSlice = createSlice({
                     state.error = null;
                     state.user = action.payload;
                 }
-            );
+            )
     }
 });
 
