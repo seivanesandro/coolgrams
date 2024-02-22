@@ -9,7 +9,6 @@ import { devices } from '../../utils/constantes';
 const Show2 = keyframes`
     0%{
         opacity:0;
-        top: -115px;
     }
     50%{
         opacity:0.5;
@@ -17,7 +16,6 @@ const Show2 = keyframes`
 
     100%{
         opacity:1;
-        top: 0;
     }
 `;
 

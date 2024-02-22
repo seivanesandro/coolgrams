@@ -24,7 +24,6 @@ import { getPhotos, like } from "../../slices/photoSlice";
 const Show = keyframes`
     0%{
         opacity:0;
-        top: -115px;
     }
     50%{
         opacity:0.5;
@@ -32,7 +31,6 @@ const Show = keyframes`
 
     100%{
         opacity:1;
-        top: 0;
     }
 `;
 const EditHomeAnimation = styled.div`
