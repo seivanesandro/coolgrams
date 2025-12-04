@@ -103,7 +103,7 @@ const Home = () => {
 
     return (
         <EditHomeAnimation id="home">
-            {photos &&
+            {Array.isArray(photos) &&
                 photos.map(photo => (
                     <div key={photo._id}>
                         <PhotoItem
@@ -126,17 +126,19 @@ const Home = () => {
                         </OptionPost>
                     </div>
                 ))}
-            {photos && photos.length === 0 && (
-                <h2 className="no-photos">
-                    Ainda não há fotos publicadas,{' '}
-                    <Link
-                        to={`/user/${user._id}`}
-                    >
-                        clique aqui
-                    </Link>{' '}
-                    para começar.
-                </h2>
-            )}
+            {Array.isArray(photos) &&
+                photos.length === 0 && (
+                    <h2 className="no-photos">
+                        Ainda não há fotos
+                        publicadas,{' '}
+                        <Link
+                            to={`/user/${user._id}`}
+                        >
+                            clique aqui
+                        </Link>{' '}
+                        para começar.
+                    </h2>
+                )}
         </EditHomeAnimation>
     );
 }

@@ -251,7 +251,11 @@ export const photoSlice = createSlice({
                     state.loading = false;
                     state.success = true;
                     state.error = null;
-                    state.photos = action.payload;
+                    state.photos = Array.isArray(
+                        action.payload
+                    )
+                        ? action.payload
+                        : [];
                 }
             )
             .addCase(getPhoto.pending, state => {
@@ -413,7 +417,11 @@ export const photoSlice = createSlice({
                     state.loading = false;
                     state.success = true;
                     state.error = null;
-                    state.photos = action.payload;
+                    state.photos = Array.isArray(
+                        action.payload
+                    )
+                        ? action.payload
+                        : [];
                 }
             )
             .addCase(
@@ -430,7 +438,11 @@ export const photoSlice = createSlice({
                     state.loading = false;
                     state.success = true;
                     state.error = null;
-                    state.photos = action.payload;
+                    state.photos = Array.isArray(
+                        action.payload
+                    )
+                        ? action.payload
+                        : [];
                 }
             );
     }
